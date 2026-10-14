@@ -33,4 +33,19 @@ public class Conexion {
 			throw new RuntimeException("No se pudo conectar a PostgreSQL", e);
 		}
 	}
+
+	public static void cerrar(AutoCloseable recurso) {
+
+		if (recurso != null) {
+
+			try {
+
+				recurso.close();
+
+			} catch (Exception e) {
+
+				log.error("Error al cerrar recurso JDBC", e);
+			}
+		}
+	}
 }

@@ -2,7 +2,6 @@ package com.krakdev.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,35 +52,15 @@ public class InsertVehiculo {
 			log.info("Vehiculo insertado: " + vehiculo.getPlaca());
 			log.info("Filas insertadas: " + filas);
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			log.error("Error al insertar vehiculo: " + e.getMessage(), e);
+            log.error("Error al insertar vehiculo: " + e.getMessage(), e);
 
-		} finally {
+        } finally {
 
-			if (ps != null) {
+            Conexion.cerrar(ps);
+            Conexion.cerrar(con);
 
-				try {
-
-					ps.close();
-
-				} catch (SQLException e) {
-
-					log.error("Error al cerrar PreparedStatement", e);
-				}
-			}
-
-			if (con != null) {
-
-				try {
-
-					con.close();
-
-				} catch (SQLException e) {
-
-					log.error("Error al cerrar conexion", e);
-				}
-			}
-		}
-	}
+        }
+    }
 }

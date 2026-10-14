@@ -1,7 +1,6 @@
 package com.krakdev.jdbc;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,19 +25,9 @@ public class ProbarConexion {
 
 		} finally {
 
-			if (con != null) {
+			Conexion.cerrar(con);
 
-				try {
-
-					con.close();
-
-					log.info("Conexion cerrada correctamente");
-
-				} catch (SQLException e) {
-
-					log.error("Error al cerrar la conexion", e);
-				}
-			}
+			log.info("Prueba de conexion finalizada");
 		}
 	}
 }

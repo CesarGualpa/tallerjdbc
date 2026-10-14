@@ -3,7 +3,6 @@ package com.krakdev.jdbc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,41 +62,9 @@ public class SelectVehiculo {
 
 		} finally {
 
-			if (rs != null) {
-
-				try {
-
-					rs.close();
-
-				} catch (SQLException e) {
-
-					log.error("Error al cerrar ResultSet", e);
-				}
-			}
-
-			if (ps != null) {
-
-				try {
-
-					ps.close();
-
-				} catch (SQLException e) {
-
-					log.error("Error al cerrar PreparedStatement", e);
-				}
-			}
-
-			if (con != null) {
-
-				try {
-
-					con.close();
-
-				} catch (SQLException e) {
-
-					log.error("Error al cerrar conexion", e);
-				}
-			}
+			Conexion.cerrar(rs);
+			Conexion.cerrar(ps);
+			Conexion.cerrar(con);
 		}
 	}
 }
