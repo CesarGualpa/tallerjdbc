@@ -40,6 +40,7 @@ public class SelectVehiculo {
 				double precio = rs.getDouble("precio");
 				String color = rs.getString("color");
 				boolean disponible = rs.getBoolean("disponible");
+				int kilometraje = rs.getInt("kilometraje");
 
 				Vehiculo vehiculo = new Vehiculo(
 						placa,
@@ -48,7 +49,8 @@ public class SelectVehiculo {
 						anio,
 						precio,
 						color,
-						disponible
+						disponible,
+						kilometraje
 				);
 
 				System.out.println(vehiculo);
